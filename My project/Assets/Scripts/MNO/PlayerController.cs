@@ -6,10 +6,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float mouseSensitivity = 200f;
-    private Transform cameraTransform;
-    private Transform groundCheck;
+    public Transform cameraTransform;
+    public Transform groundCheck;
     private float groundDistance = 0.4f;
-    private LayerMask groundMask;
+    public LayerMask groundMask;
 
     private Rigidbody rb;
     private float xRotation = 0f;

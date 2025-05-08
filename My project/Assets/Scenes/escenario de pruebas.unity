@@ -670,9 +670,9 @@ GameObject:
   - component: {fileID: 1200205911}
   - component: {fileID: 1200205910}
   - component: {fileID: 1200205909}
-  - component: {fileID: 1200205912}
   - component: {fileID: 1200205913}
   - component: {fileID: 1200205914}
+  - component: {fileID: 1200205915}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -751,21 +751,6 @@ Transform:
   - {fileID: 2143115546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1200205912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200205904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19dbc8f345f61e241a7fa045bd3eceb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 5
-  mouseSensitivity: 100
 --- !u!136 &1200205913
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -816,6 +801,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1200205915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200205904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19dbc8f345f61e241a7fa045bd3eceb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  jumpForce: 5
+  mouseSensitivity: 200
+  cameraTransform: {fileID: 1070091361}
+  groundCheck: {fileID: 1005221827}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1001 &1391722430
 PrefabInstance:
   m_ObjectHideFlags: 0
