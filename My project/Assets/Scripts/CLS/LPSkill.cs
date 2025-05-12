@@ -8,8 +8,8 @@ public class LPSkill : Skills
     private int damage;
     private float speed;
 
-    public LPSkill(string name, Sprite icon, float cooldown, int damage, float speed, GameObject projectilePrefab, Transform firePoint)
-        : base(name, icon, cooldown) {
+    public LPSkill(string name, float cooldown, int damage, float speed, GameObject projectilePrefab, Transform firePoint)
+        : base(name,cooldown) {
         this.damage = damage;
         this.speed = speed;
         this.projectilePrefab = projectilePrefab;

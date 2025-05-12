@@ -39,6 +39,7 @@ public class PlayableCharacter : MonoBehaviour
 }
 
     public PlayableCarrier GetCarrier() => carrier;
+    public bool IsUsingHealth() => usingHealth;
     
 }
 

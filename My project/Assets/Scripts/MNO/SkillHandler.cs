@@ -41,11 +41,11 @@ public class SkillHandler : MonoBehaviour
             AssignSkillsTC(agent2);
 
         void AssignSkillsTC(PlayableCarrier carrier) {
-            carrier.GetSkillSystem().AddSkill(new LHSkill("Curar", null, 2f, healZonePrefab, InsPoint));
+            carrier.GetSkillSystem().AddSkill(new LHSkill("Curar", 2f, healZonePrefab, InsPoint));
 
-            carrier.GetSkillSystem().AddSkill(new LASkill("Explosión", null, 2f, explosionPrefab, InsPoint, 5));
+            carrier.GetSkillSystem().AddSkill(new LASkill("Explosión", 2f, explosionPrefab, InsPoint, 5));
 
-            carrier.GetSkillSystem().AddSkill(new LPSkill("Disparo", null, 2f, 15, 10f, projectilePrefab, firePoint));
+            carrier.GetSkillSystem().AddSkill(new LPSkill("Disparo", 2f, 15, 10f, projectilePrefab, firePoint));
         }
 
     }

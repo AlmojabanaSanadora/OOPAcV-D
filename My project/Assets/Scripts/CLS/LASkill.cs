@@ -6,8 +6,8 @@ public class LASkill : Skills
     private Transform center;
     private GameObject explosionPrefab;
 
-    public LASkill(string name, Sprite icon, float cooldown, GameObject prefab, Transform center, int damage)
-        : base(name, icon, cooldown) {
+    public LASkill(string name, float cooldown, GameObject prefab, Transform center, int damage)
+        : base(name, cooldown) {
         this.explosionPrefab = prefab;
         this.damage = damage;
         this.center = center;

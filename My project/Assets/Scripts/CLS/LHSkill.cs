@@ -4,8 +4,8 @@ public class LHSkill : Skills {
     private GameObject healPrefab;
     private Transform center;
 
-    public LHSkill(string name, Sprite icon, float cooldown, GameObject prefab, Transform center)
-        : base(name, icon, cooldown) {
+    public LHSkill(string name, float cooldown, GameObject prefab, Transform center)
+        : base(name, cooldown) {
         this.healPrefab = prefab;
         this.center = center;
     }

@@ -9,13 +9,15 @@ public class NPCTarget : MonoBehaviour
     public NPCCarrier GetCarrier() => carrier;
     public GameObject healthBarPrefab;
 
+    private GameObject healthBarInstance;
+
 
     void Start() {
     carrier = new NPCCarrier(maxHealth);
 
     if (healthBarPrefab != null) {
-        GameObject bar = Instantiate(healthBarPrefab, transform.position + Vector3.up * 2f, Quaternion.identity);
-        bar.GetComponent<NPCHealthBar>().target = this;
+        healthBarInstance = Instantiate(healthBarPrefab, transform.position + Vector3.up * 2f, Quaternion.identity);
+        healthBarInstance.GetComponent<NPCHealthBar>().target = this;
     }
 }
 
@@ -23,6 +25,9 @@ public class NPCTarget : MonoBehaviour
     {
         if (carrier.GetHealth().GetCurrentHealth() <= 0) {
             carrier.OnDeath();
+            if (healthBarInstance != null) {
+                Destroy(healthBarInstance);
+            }
             Destroy(gameObject);
         }
     }

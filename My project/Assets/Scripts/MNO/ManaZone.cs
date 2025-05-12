@@ -32,12 +32,20 @@ public class ManaZone : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit(Collider other) {
-        var playable = other.GetComponent<PlayableCharacter>();
-        Carrier target = null;
-        target = playable.GetCarrier();
-        if (target != null && timers.ContainsKey(target)) {
-            timers.Remove(target);
-        }
+    private void OnTriggerExit(Collider other)
+{
+    var pc = other.GetComponent<PlayableCharacter>();
+    if (pc == null) return;
+
+    var carrier = pc.GetCarrier();
+    if (carrier == null) return;
+
+    var mana = carrier.GetMana();
+    if (mana == null) return;
+
+    if (timers.ContainsKey(carrier)) {
+        timers.Remove(carrier);
+        Debug.Log("Cooldown de maná eliminado del jugador al salir del área.");
     }
+}
 }

@@ -3,13 +3,11 @@ using UnityEngine;
 public abstract class Skills
 {
     protected string name;
-    protected Sprite icon;
     protected float cooldown;
     protected float lastUseTime;
 
-    public Skills(string name, Sprite icon, float cooldown) {
+    public Skills(string name, float cooldown) {
         this.name = name;
-        this.icon = icon;
         this.cooldown = cooldown;
         this.lastUseTime = -cooldown; 
     }
@@ -27,8 +25,8 @@ public abstract class Skills
     public float GetCooldownTime() => cooldown;
     public string GetName() => name;
 
-     public (string, Sprite, float) GetSkillInfo() {
-         return (name, icon, cooldown);
+     public (string, float) GetSkillInfo() {
+         return (name, cooldown);
      }
 
 
