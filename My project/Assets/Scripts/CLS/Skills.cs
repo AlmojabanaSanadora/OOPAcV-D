@@ -24,10 +24,4 @@ public abstract class Skills
 
     public float GetCooldownTime() => cooldown;
     public string GetName() => name;
-
-     public (string, float) GetSkillInfo() {
-         return (name, cooldown);
-     }
-
-
 }
