@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class MagoAcuatico : UsableCarrier
+public class MagoAcuatico : PlayableCarrier
 {
     public MagoAcuatico(int maxHealth, int maxMana)
     : base(maxHealth, maxMana) {}
     
     public override void UseSkill(int slot) {
-        health.TakeDamage(10);
-        base.UseSkill(slot);
+        var skill = GetSkillSystem().GetSkill(slot);
+        if (skill != null && skill.CanUse()) {
+            TakeDamage(5); 
+            base.UseSkill(slot);
+        }
     }
 }

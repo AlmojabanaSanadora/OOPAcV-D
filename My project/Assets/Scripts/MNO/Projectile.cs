@@ -18,10 +18,21 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Carrier target = other.GetComponent<Carrier>();
-        if (target != null && target != source) {
-            target.TakeDamage(damage);
-            Destroy(gameObject);
+    Carrier target = null;
+
+    var playable = other.GetComponent<PlayableCharacter>();
+    if (playable != null) {
+        target = playable.GetCarrier();
+    } else {
+        var npc = other.GetComponent<NPCTarget>();
+        if (npc != null) {
+            target = npc.GetCarrier();
         }
     }
+
+    if (target != null && target != source) {
+        target.TakeDamage(damage);
+        Destroy(gameObject);
+    }
+}
 }

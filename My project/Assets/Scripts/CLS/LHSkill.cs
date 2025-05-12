@@ -1,16 +1,17 @@
+
 using UnityEngine;
+public class LHSkill : Skills {
+    private GameObject healPrefab;
+    private Transform center;
 
-public class LHSkill : Skills 
-{
-    private int healAmount;
-
-    public LHSkill(string name, Sprite icon, float cooldown, int healAmount)
+    public LHSkill(string name, Sprite icon, float cooldown, GameObject prefab, Transform center)
         : base(name, icon, cooldown) {
-        this.healAmount = healAmount;
+        this.healPrefab = prefab;
+        this.center = center;
     }
 
     public override void Use(Carrier user) {
         lastUseTime = Time.time;
-        user.Heal(healAmount);
+        Object.Instantiate(healPrefab, center.position, Quaternion.identity);
     }
 }

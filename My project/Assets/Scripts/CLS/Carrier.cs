@@ -13,6 +13,12 @@ public abstract class Carrier
     public HealthSystem GetHealth() => health;
     public ManaSystem GetMana() => mana;
 
-    public void TakeDamage(int amount) => health.TakeDamage(amount);
+    public virtual void TakeDamage(int amount) {
+        health.TakeDamage(amount);
+    }
     public void Heal(int amount) => health.Heal(amount);
+
+    public virtual void OnDeath() {
+        Debug.Log("Carrier ha muerto");
+    }
 }

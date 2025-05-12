@@ -2,8 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class SkillSystem
-{
-    private List<Skills> skills = new List<Skills>();
+{   
+    private List<Skills> skills;
+    public SkillSystem() {
+        skills = new List<Skills>();
+    }
 
     public void AddSkill(Skills skill) {
         skills.Add(skill);
@@ -15,5 +18,14 @@ public class SkillSystem
         }
     }
 
-    public List<Skills> GetSkills() => skills;
+    public Skills GetSkill(int index) {
+    if (index >= 0 && index < skills.Count) {
+        return skills[index];
+    }
+    return null;
+}
+
+    public List<Skills> GetSkills() {
+        return skills;
+    }
 }

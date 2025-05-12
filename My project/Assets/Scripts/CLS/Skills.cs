@@ -20,11 +20,16 @@ public abstract class Skills
          return Time.time >= lastUseTime + cooldown;
      }
 
-     public float GetCooldown() {
+     public float GetCooldownRemaining() {
         return Mathf.Max(0, lastUseTime + cooldown - Time.time);
      }
+
+    public float GetCooldownTime() => cooldown;
+    public string GetName() => name;
 
      public (string, Sprite, float) GetSkillInfo() {
          return (name, icon, cooldown);
      }
+
+
 }

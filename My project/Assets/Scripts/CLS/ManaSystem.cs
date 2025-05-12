@@ -24,5 +24,9 @@ public class ManaSystem
 
     public ManaCondition GetCondition() => condition;
 
+    public int GetCurrentMana() => currentMana;
+    public int GetMaxMana() => maxMana;
+
+
 
 }
