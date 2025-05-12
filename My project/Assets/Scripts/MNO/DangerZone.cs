@@ -3,7 +3,7 @@ using UnityEngine;
 public class DangerZone : MonoBehaviour
 {
     [SerializeField] private int damageAmount = 10;
-    [SerializeField] private float damageInterval = 1f; // Time in seconds between damage ticks
+    [SerializeField] private float damageInterval = 1f; 
     private float damageTimer;
 
     void Update()
@@ -24,7 +24,7 @@ public class DangerZone : MonoBehaviour
             {
                 player.GetCarrier().GetMana().Decrease(damageAmount);
             }
-            damageTimer = 0f; // Reset the timer after applying damage
+            damageTimer = 0f;
         }
     }
 }

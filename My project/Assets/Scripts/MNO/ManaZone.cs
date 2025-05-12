@@ -45,7 +45,6 @@ public class ManaZone : MonoBehaviour {
 
     if (timers.ContainsKey(carrier)) {
         timers.Remove(carrier);
-        Debug.Log("Cooldown de maná eliminado del jugador al salir del área.");
     }
 }
 }

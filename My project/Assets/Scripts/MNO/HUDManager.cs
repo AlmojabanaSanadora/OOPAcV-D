@@ -13,14 +13,12 @@ public class HUDManager : MonoBehaviour {
 
         bool usingHealth = character.IsUsingHealth();
 
-        // Actualizar valores reales
         healthBar.maxValue = health.GetMaxHealth();
         healthBar.value = health.GetCurrentHealth();
 
         manaBar.maxValue = mana.GetMaxMana();
         manaBar.value = mana.GetCurrentMana();
 
-        // Mostrar solo la barra relevante
         healthBar.gameObject.SetActive(usingHealth);
         manaBar.gameObject.SetActive(!usingHealth);
     }

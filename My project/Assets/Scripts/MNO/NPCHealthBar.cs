@@ -14,9 +14,6 @@ public class NPCHealthBar : MonoBehaviour {
     float current = health.GetCurrentHealth();
     float max = health.GetMaxHealth();
 
-        Debug.Log($"NPC Health: {current}/{max}");
-
-
     slider.value = current / max;
 
     transform.position = target.transform.position + offset;
