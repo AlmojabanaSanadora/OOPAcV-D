@@ -9,8 +9,6 @@ public class SimpleSkillCooldownUI : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Cooldown system initialized");
-
         for (int i = 0; i < cooldownOverlays.Length; i++)
         {
             if (cooldownOverlays[i] != null)
@@ -22,7 +20,6 @@ public class SimpleSkillCooldownUI : MonoBehaviour
 
     void Update()
     {
-        // Check timers and turn off overlays
         for (int i = 0; i < cooldownTimers.Length; i++)
         {
             if (cooldownTimers[i] > 0f)
@@ -34,6 +31,10 @@ public class SimpleSkillCooldownUI : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { Debug.Log("Pressed 1"); TriggerCooldown(0); }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) { Debug.Log("Pressed 2"); TriggerCooldown(1); }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) { Debug.Log("Pressed 3"); TriggerCooldown(2); }
     }
 
     public void TriggerCooldown(int index)
@@ -47,6 +48,10 @@ public class SimpleSkillCooldownUI : MonoBehaviour
         if (cooldownOverlays[index] != null)
         {
             cooldownOverlays[index].enabled = true;
+        }
+        else
+        {
+            Debug.LogWarning($"Overlay {index} is null");
         }
     }
 }
