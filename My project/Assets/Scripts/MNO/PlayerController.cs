@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Settings")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpForce = 3f;
     [SerializeField] private float mouseSensitivity = 200f;
     public Transform cameraTransform;
     public Transform groundCheck;
@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private float xRotation = 0f;
     private bool isGrounded;
+
+    private Vector3 objectVelocity; 
+    private Transform currentObject; 
+    private Vector3 lastObjectPosition; 
 
     private void Start()
     {
@@ -26,6 +30,7 @@ public class PlayerController : MonoBehaviour
         HandleMouseLook();
         HandleMovement();
         HandleJump();
+        UpdateObjectMovement();
     }
 
     private void HandleMouseLook()
@@ -42,12 +47,12 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveZ = Input.GetAxisRaw("Vertical"); 
 
         Vector3 move = (transform.right * moveX + transform.forward * moveZ).normalized * moveSpeed;
-        Vector3 targetVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
-        rb.linearVelocity = targetVelocity;
+        Vector3 targetVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z); 
+        rb.linearVelocity = targetVelocity; 
     }
 
     private void HandleJump()
@@ -57,6 +62,46 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            currentObject = null;
+        }
+    }
+
+    private void UpdateObjectMovement()
+    {
+        if (isGrounded)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(groundCheck.position, Vector3.down, out hit, groundDistance + 0.1f))
+            {
+                Transform obj = hit.collider.transform;
+
+                if (currentObject == obj)
+                {
+                    objectVelocity = obj.position - lastObjectPosition;
+                }
+                else
+                {
+                    objectVelocity = Vector3.zero; 
+                }
+
+                currentObject = obj;
+                lastObjectPosition = obj.position; 
+            }
+            else
+            {
+                currentObject = null;
+                objectVelocity = Vector3.zero;
+            }
+        }
+        else
+        {
+            currentObject = null;
+            objectVelocity = Vector3.zero;
+        }
+
+        if (currentObject != null)
+        {
+            transform.position += objectVelocity;
         }
     }
 }
